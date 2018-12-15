@@ -1,0 +1,14 @@
+#Advent Day One
+def parser(number):
+    pos_neg = number[0]
+    value = int(number[1:])
+    if pos_neg == "-":
+        value = value*-1
+
+freq = 0
+    
+with open(./Adventofcode/dayone.txt,"r") as file:
+    for line in file:
+        value = parser(line)
+        freq += value
+    print ('final value is {freq})
