@@ -1,4 +1,5 @@
 #Advent Day One
+#Part One
 def parser(number):
     pos_neg = number[0]
     value = number[1:]
