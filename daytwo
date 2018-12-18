@@ -1,0 +1,44 @@
+#Day 2 of Advent of Code
+def part_1():
+	two_time = 0
+	three_time = 0
+	with open("./daytwoinput.txt", "r") as file:
+		for line in file:
+			holding_dict = collections.Counter(line)
+			if 2 in holding_dict.values():
+				two_time += 1
+			if 3 in holding_dict.values():
+				three_time += 1
+	checksum = two_time*three_time
+	print (checksum)
+
+#For part two creating a list of all values. Need to iterate and compare them. 
+def part_2():
+	part2list = open('./daytwoinput.txt', 'r')
+	templist = part2list.readlines()
+	templist = list(map(lambda x:x.strip(),templist))
+	templist = list(itertools.combinations(templist, 2))
+	highmatch = []
+	highscore = 0
+	for item in templist:
+		m = difflib.SequenceMatcher(None, item[0],item[1])
+		score = m.ratio()
+		if score > highscore:
+			highscore = score
+			highmatch = (item[0],item[1])
+
+	newmatch = ""
+	i = 0
+	for char in highmatch[0]:
+		if char == highmatch[1][i]:
+			#print(char)
+			newmatch += highmatch[0][i]
+			i += 1
+		else:
+			i += 1
+
+	print (newmatch)
+
+
+part_1()
+part_2()
